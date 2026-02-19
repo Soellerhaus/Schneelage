@@ -253,7 +253,7 @@
       var html = '';
       rows.forEach(function (row, idx) {
         var r = row.resort, ac = 'aval-' + Math.min(5, Math.max(1, row.avalLevel));
-        html += '<tr onclick="window.location.href=\'/' + esc(r.slug) + '/\'">' +
+        html += '<tr onclick="window.location.href=\'' + (window.BASE_PATH || '') + '/' + esc(r.slug) + '/\'">' +
           '<td class="num">' + (idx + 1) + '</td>' +
           '<td><span class="resort-name">' + esc(r.name) + '</span><br><span class="resort-region">' + esc(r.region) + '</span></td>' +
           '<td class="num score-cell">' + row.score + '</td>' +
@@ -334,7 +334,7 @@
       // Neighbors
       html += '<div class="detail-block"><h3>In der N\u00E4he</h3><div class="neighbors">';
       var allR = JSON.parse(document.getElementById('all-resorts-data').textContent || '[]');
-      (resort.neighbors || []).forEach(function (slug) { var nr = allR.find(function (x) { return x.slug === slug; }); if (nr) html += '<a class="neighbor-link" href="/' + esc(nr.slug) + '/">' + esc(nr.name) + '</a>'; });
+      (resort.neighbors || []).forEach(function (slug) { var nr = allR.find(function (x) { return x.slug === slug; }); if (nr) html += '<a class="neighbor-link" href="' + (window.BASE_PATH || '') + '/' + esc(nr.slug) + '/">' + esc(nr.name) + '</a>'; });
       html += '</div><a class="booking-link" href="https://www.booking.com/searchresults.html?ss=' + encodeURIComponent(resort.name) + '&aid=AFFILIATE_ID" target="_blank" rel="noopener nofollow">Unterk\u00FCnfte in ' + esc(resort.name) + ' \u2192</a></div>';
       html += '</div>';
       el.innerHTML = html;

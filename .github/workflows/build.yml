@@ -23,6 +23,8 @@ jobs:
           node-version: '20'
 
       - run: node build.mjs
+        env:
+          BASE_PATH: /Schneelage
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

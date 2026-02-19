@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DOMAIN = 'https://schneelage.app';
+const BASE_PATH = process.env.BASE_PATH || '/Schneelage';
 
 // Read resorts data
 const data = JSON.parse(readFileSync(join(__dirname, 'data', 'resorts.json'), 'utf8'));
@@ -37,7 +38,7 @@ function head(title, description, canonical, extra = '') {
 <title>${escHtml(title)}</title>
 <meta name="description" content="${escHtml(description)}">
 <link rel="canonical" href="${DOMAIN}${canonical}">
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="${BASE_PATH}/css/style.css">
 ${extra}
 </head>`;
 }
@@ -45,12 +46,12 @@ ${extra}
 function nav() {
   return `<header class="site-header">
 <div class="container">
-<a href="/" class="site-title">Schneelage Alpen</a>
+<a href="${BASE_PATH}/" class="site-title">Schneelage Alpen</a>
 <nav class="site-nav">
-<a href="/oesterreich/">AT</a>
-<a href="/schweiz/">CH</a>
-<a href="/deutschland/">DE</a>
-<a href="/impressum/">Impressum</a>
+<a href="${BASE_PATH}/oesterreich/">AT</a>
+<a href="${BASE_PATH}/schweiz/">CH</a>
+<a href="${BASE_PATH}/deutschland/">DE</a>
+<a href="${BASE_PATH}/impressum/">Impressum</a>
 </nav>
 </div>
 </header>`;
@@ -60,17 +61,17 @@ function footer() {
   return `<footer class="site-footer">
 <div class="container">
 <div class="footer-links">
-<a href="/oesterreich/">Österreich</a>
-<a href="/schweiz/">Schweiz</a>
-<a href="/deutschland/">Deutschland</a>
-<a href="/tirol/">Tirol</a>
-<a href="/vorarlberg/">Vorarlberg</a>
-<a href="/salzburg/">Salzburg</a>
-<a href="/bayern/">Bayern</a>
-<a href="/graubuenden/">Graubünden</a>
-<a href="/wallis/">Wallis</a>
-<a href="/impressum/">Impressum</a>
-<a href="/datenschutz/">Datenschutz</a>
+<a href="${BASE_PATH}/oesterreich/">Österreich</a>
+<a href="${BASE_PATH}/schweiz/">Schweiz</a>
+<a href="${BASE_PATH}/deutschland/">Deutschland</a>
+<a href="${BASE_PATH}/tirol/">Tirol</a>
+<a href="${BASE_PATH}/vorarlberg/">Vorarlberg</a>
+<a href="${BASE_PATH}/salzburg/">Salzburg</a>
+<a href="${BASE_PATH}/bayern/">Bayern</a>
+<a href="${BASE_PATH}/graubuenden/">Graubünden</a>
+<a href="${BASE_PATH}/wallis/">Wallis</a>
+<a href="${BASE_PATH}/impressum/">Impressum</a>
+<a href="${BASE_PATH}/datenschutz/">Datenschutz</a>
 </div>
 <div class="footer-source">Daten: Open-Meteo, EAWS, SLF, OpenHolidays</div>
 </div>
@@ -78,7 +79,7 @@ function footer() {
 }
 
 function scripts() {
-  return `<script src="/js/app.js"></script>`;
+  return `<script>window.BASE_PATH="${BASE_PATH}";</script>\n<script src="${BASE_PATH}/js/app.js"></script>`;
 }
 
 function rankingTable() {
@@ -172,9 +173,9 @@ function buildResort(resort) {
 ${nav()}
 <main class="container">
 <div class="breadcrumb">
-<a href="/">Schneelage</a><span>&gt;</span>
-<a href="/${escHtml(resort.countrySlug)}/">${escHtml(resort.countryName)}</a><span>&gt;</span>
-<a href="/${escHtml(resort.regionSlug)}/">${escHtml(resort.region)}</a><span>&gt;</span>
+<a href="${BASE_PATH}/">Schneelage</a><span>&gt;</span>
+<a href="${BASE_PATH}/${escHtml(resort.countrySlug)}/">${escHtml(resort.countryName)}</a><span>&gt;</span>
+<a href="${BASE_PATH}/${escHtml(resort.regionSlug)}/">${escHtml(resort.region)}</a><span>&gt;</span>
 ${escHtml(resort.name)}
 </div>
 <h1>Schneelage ${escHtml(resort.name)}</h1>
@@ -217,8 +218,8 @@ ${nav()}
 <div id="crowd-bar" class="crowd-bar"></div>
 <main class="container">
 <div class="breadcrumb">
-<a href="/">Schneelage</a><span>&gt;</span>
-<a href="/${escHtml(countrySlug)}/">${escHtml(countryName)}</a><span>&gt;</span>
+<a href="${BASE_PATH}/">Schneelage</a><span>&gt;</span>
+<a href="${BASE_PATH}/${escHtml(countrySlug)}/">${escHtml(countryName)}</a><span>&gt;</span>
 ${escHtml(regionName)}
 </div>
 <h1>Schneelage ${escHtml(regionName)}</h1>
@@ -249,7 +250,7 @@ function buildCountry(countrySlug, countryName, countryResorts) {
 
   let regionLinks = '<div class="region-list">';
   for (const [slug, name] of Object.entries(regionMap)) {
-    regionLinks += `<a href="/${escHtml(slug)}/">${escHtml(name)}</a>`;
+    regionLinks += `<a href="${BASE_PATH}/${escHtml(slug)}/">${escHtml(name)}</a>`;
   }
   regionLinks += '</div>';
 
@@ -268,7 +269,7 @@ ${nav()}
 <div id="crowd-bar" class="crowd-bar"></div>
 <main class="container">
 <div class="breadcrumb">
-<a href="/">Schneelage</a><span>&gt;</span>
+<a href="${BASE_PATH}/">Schneelage</a><span>&gt;</span>
 ${escHtml(countryName)}
 </div>
 <h1>Schneelage ${escHtml(countryName)}</h1>
@@ -296,7 +297,7 @@ function buildImpressum() {
 ${nav()}
 <main class="container">
 <div class="breadcrumb">
-<a href="/">Schneelage</a><span>&gt;</span> Impressum
+<a href="${BASE_PATH}/">Schneelage</a><span>&gt;</span> Impressum
 </div>
 <h1>Impressum</h1>
 <div class="legal-content">
@@ -328,7 +329,7 @@ function buildDatenschutz() {
 ${nav()}
 <main class="container">
 <div class="breadcrumb">
-<a href="/">Schneelage</a><span>&gt;</span> Datenschutz
+<a href="${BASE_PATH}/">Schneelage</a><span>&gt;</span> Datenschutz
 </div>
 <h1>Datenschutzerkl\u00E4rung</h1>
 <div class="legal-content">
