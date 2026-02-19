@@ -46,12 +46,11 @@ ${extra}
 function nav() {
   return `<header class="site-header">
 <div class="container">
-<a href="${BASE_PATH}/" class="site-title">Schneelage Alpen</a>
+<a href="${BASE_PATH}/" class="site-title"><span class="site-logo">&#9968;</span> Schneelage Alpen</a>
 <nav class="site-nav">
-<a href="${BASE_PATH}/oesterreich/">AT</a>
-<a href="${BASE_PATH}/schweiz/">CH</a>
-<a href="${BASE_PATH}/deutschland/">DE</a>
-<a href="${BASE_PATH}/impressum/">Impressum</a>
+<a href="${BASE_PATH}/oesterreich/">\u00D6sterreich</a>
+<a href="${BASE_PATH}/schweiz/">Schweiz</a>
+<a href="${BASE_PATH}/deutschland/">Deutschland</a>
 </nav>
 </div>
 </header>`;
@@ -60,20 +59,37 @@ function nav() {
 function footer() {
   return `<footer class="site-footer">
 <div class="container">
-<div class="footer-links">
-<a href="${BASE_PATH}/oesterreich/">Österreich</a>
+<div class="footer-top">
+<div class="footer-brand">
+<span class="footer-brand-name">&#9968; Schneelage Alpen</span>
+<span class="footer-brand-tagline">Schneeh\u00F6hen & Ski-Score Ranking</span>
+</div>
+<div class="footer-nav">
+<div class="footer-col">
+<div class="footer-col-title">L\u00E4nder</div>
+<a href="${BASE_PATH}/oesterreich/">\u00D6sterreich</a>
 <a href="${BASE_PATH}/schweiz/">Schweiz</a>
 <a href="${BASE_PATH}/deutschland/">Deutschland</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Regionen</div>
 <a href="${BASE_PATH}/tirol/">Tirol</a>
 <a href="${BASE_PATH}/vorarlberg/">Vorarlberg</a>
 <a href="${BASE_PATH}/salzburg/">Salzburg</a>
-<a href="${BASE_PATH}/bayern/">Bayern</a>
-<a href="${BASE_PATH}/graubuenden/">Graubünden</a>
+<a href="${BASE_PATH}/graubuenden/">Graub\u00FCnden</a>
 <a href="${BASE_PATH}/wallis/">Wallis</a>
+<a href="${BASE_PATH}/bayern/">Bayern</a>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Info</div>
 <a href="${BASE_PATH}/impressum/">Impressum</a>
 <a href="${BASE_PATH}/datenschutz/">Datenschutz</a>
 </div>
-<div class="footer-source">Daten: Open-Meteo, EAWS, SLF, OpenHolidays</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-source">Daten: Open-Meteo \u00B7 EAWS \u00B7 SLF \u00B7 OpenHolidays</div>
+</div>
 </div>
 </footer>`;
 }
@@ -120,9 +136,15 @@ function buildHome() {
 <body data-page="home">
 ${nav()}
 <div id="crowd-bar" class="crowd-bar"></div>
+<section class="hero">
+<div class="container">
+<div class="hero-badge">&#10052; Live-Daten</div>
+<h1 class="hero-title">Schneelage Alpen</h1>
+<p class="hero-subtitle">Aktuelle Schneeh\u00F6hen, Ski-Score &amp; Prognose f\u00FCr 15 Top-Skigebiete in \u00D6sterreich, Schweiz und Deutschland.</p>
+<div id="date-display" class="hero-date"></div>
+</div>
+</section>
 <main class="container">
-<h1>Schneelage Alpen</h1>
-<div id="date-display" class="date-display"></div>
 ${rankingTable()}
 </main>
 ${footer()}
@@ -171,15 +193,19 @@ function buildResort(resort) {
   const html = `${head(resort.seo.title, resort.seo.description, '/' + resort.slug + '/')}
 <body data-page="resort">
 ${nav()}
-<main class="container">
-<div class="breadcrumb">
+<section class="hero hero-sm">
+<div class="container">
+<div class="breadcrumb breadcrumb-hero">
 <a href="${BASE_PATH}/">Schneelage</a><span>&gt;</span>
 <a href="${BASE_PATH}/${escHtml(resort.countrySlug)}/">${escHtml(resort.countryName)}</a><span>&gt;</span>
 <a href="${BASE_PATH}/${escHtml(resort.regionSlug)}/">${escHtml(resort.region)}</a><span>&gt;</span>
 ${escHtml(resort.name)}
 </div>
-<h1>Schneelage ${escHtml(resort.name)}</h1>
-<div id="date-display" class="date-display"></div>
+<h1 class="hero-title">Schneelage ${escHtml(resort.name)}</h1>
+<div id="date-display" class="hero-date"></div>
+</div>
+</section>
+<main class="container">
 <div id="detail-content"></div>
 </main>
 ${footer()}
@@ -216,14 +242,18 @@ function buildRegion(regionSlug, regionName, regionResorts, countryName, country
 <body data-page="region">
 ${nav()}
 <div id="crowd-bar" class="crowd-bar"></div>
-<main class="container">
-<div class="breadcrumb">
+<section class="hero hero-sm">
+<div class="container">
+<div class="breadcrumb breadcrumb-hero">
 <a href="${BASE_PATH}/">Schneelage</a><span>&gt;</span>
 <a href="${BASE_PATH}/${escHtml(countrySlug)}/">${escHtml(countryName)}</a><span>&gt;</span>
 ${escHtml(regionName)}
 </div>
-<h1>Schneelage ${escHtml(regionName)}</h1>
-<div id="date-display" class="date-display"></div>
+<h1 class="hero-title">Schneelage ${escHtml(regionName)}</h1>
+<div id="date-display" class="hero-date"></div>
+</div>
+</section>
+<main class="container">
 ${rankingTable()}
 </main>
 ${footer()}
@@ -267,13 +297,17 @@ function buildCountry(countrySlug, countryName, countryResorts) {
 <body data-page="country">
 ${nav()}
 <div id="crowd-bar" class="crowd-bar"></div>
-<main class="container">
-<div class="breadcrumb">
+<section class="hero hero-sm">
+<div class="container">
+<div class="breadcrumb breadcrumb-hero">
 <a href="${BASE_PATH}/">Schneelage</a><span>&gt;</span>
 ${escHtml(countryName)}
 </div>
-<h1>Schneelage ${escHtml(countryName)}</h1>
-<div id="date-display" class="date-display"></div>
+<h1 class="hero-title">Schneelage ${escHtml(countryName)}</h1>
+<div id="date-display" class="hero-date"></div>
+</div>
+</section>
+<main class="container">
 ${regionLinks}
 ${rankingTable()}
 </main>

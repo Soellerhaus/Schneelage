@@ -131,6 +131,14 @@
     return 'Schlecht';
   };
 
+  window.getScoreColor = function (score) {
+    if (score >= 80) return { bg: '#dcfce7', text: '#166534', border: '#86efac' };
+    if (score >= 60) return { bg: '#d1fae5', text: '#065f46', border: '#6ee7b7' };
+    if (score >= 40) return { bg: '#fef9c3', text: '#854d0e', border: '#fde047' };
+    if (score >= 20) return { bg: '#ffedd5', text: '#9a3412', border: '#fdba74' };
+    return { bg: '#fee2e2', text: '#991b1b', border: '#fca5a5' };
+  };
+
   window.getTrendDirection = function (current, future) {
     var diff = future - current;
     if (diff > 2) return { arrow: '\u2191', cls: 'trend-up', label: 'steigend' };
@@ -233,7 +241,7 @@
     else { level = 'Gering'; color = '#22c55e'; }
     var detail = dn[dow] + (rc > 0 ? ' + Ferien in ' + rc + ' Regionen' : ', keine relevanten Ferien');
     var levelCls = level === 'Sehr hoch' ? 'sehr_hoch' : level === 'Hoch' ? 'hoch' : level === 'Mittel' ? 'mittel' : 'gering';
-    el.innerHTML = '<span>Erwartete Auslastung:</span> <span class="crowd-level crowd-level-' + levelCls + '">' + esc(level) + '</span> <span class="crowd-detail">\u2013 ' + esc(detail) + '</span>';
+    el.innerHTML = '<span>\u26F7\uFE0F Auslastung heute:</span> <span class="crowd-level crowd-level-' + levelCls + '">' + esc(level) + '</span> <span class="crowd-detail">\u2013 ' + esc(detail) + '</span>';
   }
 
   function renderRankingTable(resorts, holidays) {
@@ -254,10 +262,12 @@
       var html = '';
       rows.forEach(function (row, idx) {
         var r = row.resort, ac = 'aval-' + Math.min(5, Math.max(1, row.avalLevel));
+        var sc = window.getScoreColor(row.score);
+        var medal = idx < 3 ? ['\uD83E\uDD47','\uD83E\uDD48','\uD83E\uDD49'][idx] + ' ' : '';
         html += '<tr onclick="window.location.href=\'' + (window.BASE_PATH || '') + '/' + esc(r.slug) + '/\'">' +
-          '<td class="num">' + (idx + 1) + '</td>' +
+          '<td class="num rank-cell">' + medal + (idx + 1) + '</td>' +
           '<td><span class="resort-name">' + esc(r.name) + '</span><br><span class="resort-region">' + esc(r.region) + '</span></td>' +
-          '<td class="num score-cell">' + row.score + '</td>' +
+          '<td class="num"><span class="score-badge" style="background:' + sc.bg + ';color:' + sc.text + ';border:1px solid ' + sc.border + '">' + row.score + '</span></td>' +
           '<td class="num num-data">' + row.depth + '<span class="unit">cm</span></td>' +
           '<td class="num num-data">' + row.newSnow3d + '<span class="unit">cm</span></td>' +
           '<td class="' + row.trend.cls + '" style="text-align:center">' + row.trend.arrow + '</td>' +
@@ -294,19 +304,31 @@
       var tDir = window.getTrendDirection(d, sn ? sn.depth3d : d);
 
       var html = '<div class="detail-grid protected">';
-      // Ski-Score
-      html += '<div class="detail-block"><h3>Ski-Score</h3><div class="score-big">' + score + '</div><div class="score-label">' + esc(sLabel) + '</div><div class="score-max">von 100 Punkten</div></div>';
+      // Ski-Score with SVG ring
+      var scoreCol = window.getScoreColor(score);
+      var circ = 2 * Math.PI * 40;
+      var sOff = circ - (score / 100) * circ;
+      html += '<div class="detail-block"><h3>\uD83C\uDFBF Ski-Score</h3>'
+        + '<div class="score-ring-wrap">'
+        + '<svg class="score-ring" viewBox="0 0 100 100">'
+        + '<circle cx="50" cy="50" r="40" fill="none" stroke="#e2e8f0" stroke-width="8"/>'
+        + '<circle cx="50" cy="50" r="40" fill="none" stroke="' + scoreCol.text + '" stroke-width="8" stroke-linecap="round" stroke-dasharray="' + circ.toFixed(1) + '" stroke-dashoffset="' + sOff.toFixed(1) + '" transform="rotate(-90 50 50)"/>'
+        + '</svg>'
+        + '<div class="score-ring-value" style="color:' + scoreCol.text + '">' + score + '</div>'
+        + '</div>'
+        + '<div class="score-label">' + esc(sLabel) + '</div>'
+        + '<div class="score-max">von 100 Punkten</div></div>';
       // Snow depth
-      html += '<div class="detail-block"><h3>Schneeh\u00F6he</h3><div class="snow-value">' + d + '<span class="snow-unit">cm</span></div><div class="snow-elevation">' + resort.elevation.min + ' \u2013 ' + resort.elevation.max + ' m</div></div>';
+      html += '<div class="detail-block"><h3>\u2744\uFE0F Schneeh\u00F6he</h3><div class="snow-value">' + d + '<span class="snow-unit">cm</span></div><div class="snow-elevation">' + resort.elevation.min + ' \u2013 ' + resort.elevation.max + ' m</div></div>';
       // Trend
-      html += '<div class="detail-block"><h3>Trend</h3><div class="trend-row"><span>Heute ' + d + 'cm</span><span class="trend-arrow ' + tDir.cls + '">' + tDir.arrow + '</span><span>3d ' + (sn ? sn.depth3d : d) + 'cm</span><span class="trend-arrow ' + tDir.cls + '">' + tDir.arrow + '</span><span>7d ' + (sn ? sn.depth7d : d) + 'cm</span></div><div class="trend-label">Trend: ' + esc(tDir.label) + '</div></div>';
+      html += '<div class="detail-block"><h3>\uD83D\uDCC8 Trend</h3><div class="trend-row"><span>Heute ' + d + 'cm</span><span class="trend-arrow ' + tDir.cls + '">' + tDir.arrow + '</span><span>3d ' + (sn ? sn.depth3d : d) + 'cm</span><span class="trend-arrow ' + tDir.cls + '">' + tDir.arrow + '</span><span>7d ' + (sn ? sn.depth7d : d) + 'cm</span></div><div class="trend-label">Trend: ' + esc(tDir.label) + '</div></div>';
       // Avalanche
       var aC = ['', 'var(--danger-1)', 'var(--danger-2)', 'var(--danger-3)', 'var(--danger-4)', 'var(--danger-5)'][al] || 'var(--border)';
-      html += '<div class="detail-block"><h3>Lawinenstufe</h3><div class="aval-text"><span class="aval-dot aval-' + Math.min(5, Math.max(1, al)) + '">' + (al || '-') + '</span> ' + esc(window.getAvalancheLabel(al)) + '</div><div class="aval-level-bar" style="background:' + aC + '"></div>';
+      html += '<div class="detail-block"><h3>\u26A0\uFE0F Lawinenstufe</h3><div class="aval-text"><span class="aval-dot aval-' + Math.min(5, Math.max(1, al)) + '">' + (al || '-') + '</span> ' + esc(window.getAvalancheLabel(al)) + '</div><div class="aval-level-bar" style="background:' + aC + '"></div>';
       if (av && av.problems && av.problems.length > 0) { html += '<ul class="aval-problems">'; av.problems.forEach(function (p) { html += '<li>' + esc(window.translateAvalancheProblem(p)) + '</li>'; }); html += '</ul>'; }
       html += '</div>';
       // Neuschnee 7d
-      html += '<div class="detail-block" style="grid-column:span 2"><h3>Neuschnee 7 Tage</h3>';
+      html += '<div class="detail-block" style="grid-column:span 2"><h3>\u2744\uFE0F Neuschnee 7 Tage</h3>';
       if (sn && sn.snowfallDaily.length > 0) {
         var mx = Math.max.apply(null, sn.snowfallDaily.concat([1]));
         html += '<div class="newsnow-bars">'; sn.snowfallDaily.forEach(function (v) { var h = Math.max(2, (v / mx) * 60); html += '<div class="newsnow-bar" style="height:' + h + 'px">' + (v > 0 ? '<span class="newsnow-bar-label">' + v + '</span>' : '') + '</div>'; }); html += '</div><div class="newsnow-days">';
@@ -315,14 +337,14 @@
       } else { html += '<div class="trend-label">Keine Daten verf\u00FCgbar</div>'; }
       html += '</div>';
       // Weather 7d
-      html += '<div class="detail-block" style="grid-column:span 2"><h3>Wetter 7 Tage</h3>';
+      html += '<div class="detail-block" style="grid-column:span 2"><h3>\u2600\uFE0F Wetter 7 Tage</h3>';
       if (sn && sn.dailyDates && sn.dailyDates.length > 0) {
         var da2 = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
         html += '<div class="weather-row">'; sn.dailyDates.forEach(function (dt, i) { var dd = new Date(dt + 'T00:00:00'); html += '<div class="weather-day"><div class="day-name">' + da2[dd.getDay()] + '</div><div class="temp-max">' + (sn.maxTemps[i] !== undefined ? Math.round(sn.maxTemps[i]) : '-') + '\u00B0</div><div class="temp-min">' + (sn.minTemps[i] !== undefined ? Math.round(sn.minTemps[i]) : '-') + '\u00B0</div></div>'; }); html += '</div>';
       }
       html += '</div>';
       // Crowd
-      html += '<div class="detail-block"><h3>Erwartete Auslastung</h3><div class="crowd-label-big crowd-level-' + crowd.level + '">' + esc(crowd.label) + '</div><div class="crowd-block-bar" style="background:' + crowd.color + '"></div><div class="crowd-detail-text">' + esc(crowd.dayOfWeek) + ' \u2013 ' + esc(crowd.dayHint) + '</div>';
+      html += '<div class="detail-block"><h3>\uD83D\uDC65 Erwartete Auslastung</h3><div class="crowd-label-big crowd-level-' + crowd.level + '">' + esc(crowd.label) + '</div><div class="crowd-block-bar" style="background:' + crowd.color + '"></div><div class="crowd-detail-text">' + esc(crowd.dayOfWeek) + ' \u2013 ' + esc(crowd.dayHint) + '</div>';
       if (crowd.activeNames.length > 0) {
         html += '<div class="crowd-ferien-summary">' + crowd.activeNames.length + ' aktive Ferienzeiten im Einzugsgebiet</div>';
         html += '<button class="crowd-ferien-toggle" onclick="var l=this.nextElementSibling;l.classList.toggle(\'open\');this.textContent=l.classList.contains(\'open\')?\'\u25B2 Weniger anzeigen\':\'\u25BC Details anzeigen\'">&#9660; Details anzeigen</button>';
@@ -333,13 +355,13 @@
       if (crowd.level === 'hoch' || crowd.level === 'sehr_hoch') html += '<div class="crowd-tip">Tipp: Unter der Woche (Di\u2013Do) ist es deutlich ruhiger.</div>';
       html += '</div>';
       // Peak calendar
-      html += '<div class="detail-block" style="grid-column:span 2"><h3>Saison\u00FCbersicht Auslastung</h3>' + renderPeakCalendar(resort.peakPeriods) + '</div>';
+      html += '<div class="detail-block" style="grid-column:span 2"><h3>\uD83D\uDCC5 Saison\u00FCbersicht Auslastung</h3>' + renderPeakCalendar(resort.peakPeriods) + '</div>';
       // Ticket
-      html += '<div class="detail-block"><h3>Skipass</h3><div class="ticket-detail"><div class="ticket-big">' + formatPriceDetail(resort) + '</div><div class="ticket-small">Tagesticket Erwachsene, Hauptsaison ' + esc(resort.tickets.season) + '</div></div>';
+      html += '<div class="detail-block"><h3>\uD83C\uDFAB Skipass</h3><div class="ticket-detail"><div class="ticket-big">' + formatPriceDetail(resort) + '</div><div class="ticket-small">Tagesticket Erwachsene, Hauptsaison ' + esc(resort.tickets.season) + '</div></div>';
       if (resort.tickets.source) html += '<a class="ticket-link" href="' + esc(resort.tickets.source) + '" target="_blank" rel="noopener">Offizielle Preise \u2192</a>';
       html += '</div>';
       // Neighbors
-      html += '<div class="detail-block"><h3>In der N\u00E4he</h3><div class="neighbors">';
+      html += '<div class="detail-block"><h3>\uD83D\uDCCD In der N\u00E4he</h3><div class="neighbors">';
       var allR = JSON.parse(document.getElementById('all-resorts-data').textContent || '[]');
       (resort.neighbors || []).forEach(function (slug) { var nr = allR.find(function (x) { return x.slug === slug; }); if (nr) html += '<a class="neighbor-link" href="' + (window.BASE_PATH || '') + '/' + esc(nr.slug) + '/">' + esc(nr.name) + '</a>'; });
       html += '</div><a class="booking-link" href="https://www.booking.com/searchresults.html?ss=' + encodeURIComponent(resort.name) + '&aid=AFFILIATE_ID" target="_blank" rel="noopener nofollow">Unterk\u00FCnfte in ' + esc(resort.name) + ' \u2192</a></div>';
