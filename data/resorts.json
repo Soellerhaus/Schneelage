@@ -1,0 +1,559 @@
+{
+  "resorts": [
+    {
+      "slug": "soelden",
+      "name": "Sölden",
+      "region": "Tirol",
+      "regionSlug": "tirol",
+      "country": "AT",
+      "countryName": "Österreich",
+      "countrySlug": "oesterreich",
+      "lat": 46.97,
+      "lon": 10.87,
+      "elevation": { "min": 1350, "max": 3340 },
+      "avalancheRegion": "AT-07",
+      "avalancheMicroRegion": "AT-07-12",
+      "geosphereStations": ["11318", "11127"],
+      "neighbors": ["mayrhofen", "st-anton-am-arlberg", "ischgl"],
+      "impactRegions": ["DE-BY", "DE-BW", "AT", "NL", "CH"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Winterferien DE/NL/CH", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 83.00,
+        "child1Day": 41.50,
+        "adult6Day": 415.00,
+        "child6Day": 207.50,
+        "currency": "EUR",
+        "source": "https://www.soelden.com/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage Sölden – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage Sölden: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich Sölden dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "st-anton-am-arlberg",
+      "name": "St. Anton am Arlberg",
+      "region": "Tirol",
+      "regionSlug": "tirol",
+      "country": "AT",
+      "countryName": "Österreich",
+      "countrySlug": "oesterreich",
+      "lat": 47.13,
+      "lon": 10.27,
+      "elevation": { "min": 1304, "max": 2811 },
+      "avalancheRegion": "AT-07",
+      "avalancheMicroRegion": "AT-07-01",
+      "geosphereStations": ["11110"],
+      "neighbors": ["lech-zuers", "ischgl", "soelden"],
+      "impactRegions": ["DE-BY", "DE-BW", "AT", "NL", "CH"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Winterferien DE/NL/CH", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 81.50,
+        "child1Day": 48.50,
+        "adult6Day": 407.50,
+        "child6Day": 242.50,
+        "currency": "EUR",
+        "source": "https://www.stantonamarlberg.com/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage St. Anton am Arlberg – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage St. Anton am Arlberg: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich St. Anton dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "ischgl",
+      "name": "Ischgl",
+      "region": "Tirol",
+      "regionSlug": "tirol",
+      "country": "AT",
+      "countryName": "Österreich",
+      "countrySlug": "oesterreich",
+      "lat": 47.00,
+      "lon": 10.29,
+      "elevation": { "min": 1400, "max": 2872 },
+      "avalancheRegion": "AT-07",
+      "avalancheMicroRegion": "AT-07-19",
+      "geosphereStations": [],
+      "neighbors": ["st-anton-am-arlberg", "soelden", "davos-klosters"],
+      "impactRegions": ["DE-BY", "DE-BW", "AT", "NL", "CH"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Winterferien DE/NL/CH", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 79.00,
+        "child1Day": 47.50,
+        "adult6Day": 395.00,
+        "child6Day": 237.50,
+        "currency": "EUR",
+        "source": "https://www.ischgl.com/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage Ischgl – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage Ischgl: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich Ischgl dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "kitzbuehel",
+      "name": "Kitzbühel",
+      "region": "Tirol",
+      "regionSlug": "tirol",
+      "country": "AT",
+      "countryName": "Österreich",
+      "countrySlug": "oesterreich",
+      "lat": 47.45,
+      "lon": 12.39,
+      "elevation": { "min": 800, "max": 2000 },
+      "avalancheRegion": "AT-07",
+      "avalancheMicroRegion": "AT-07-17",
+      "geosphereStations": ["11135"],
+      "neighbors": ["saalbach-hinterglemm", "mayrhofen"],
+      "impactRegions": ["DE-BY", "AT", "DE-BW", "CZ"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Winterferien DE/NL/CH", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 79.50,
+        "child1Day": 39.50,
+        "adult6Day": 397.50,
+        "child6Day": 197.50,
+        "currency": "EUR",
+        "source": "https://www.kitzbuehel.com/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage Kitzbühel – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage Kitzbühel: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich Kitzbühel dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "saalbach-hinterglemm",
+      "name": "Saalbach Hinterglemm",
+      "region": "Salzburg",
+      "regionSlug": "salzburg",
+      "country": "AT",
+      "countryName": "Österreich",
+      "countrySlug": "oesterreich",
+      "lat": 47.39,
+      "lon": 12.64,
+      "elevation": { "min": 1003, "max": 2096 },
+      "avalancheRegion": "AT-05",
+      "avalancheMicroRegion": "AT-05-19",
+      "geosphereStations": [],
+      "neighbors": ["kitzbuehel", "obertauern"],
+      "impactRegions": ["DE-BY", "AT", "DE-BW", "NL", "CZ"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Winterferien DE/NL/CH", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 78.00,
+        "child1Day": 39.00,
+        "adult6Day": 390.00,
+        "child6Day": 195.00,
+        "currency": "EUR",
+        "source": "https://www.saalbach.com/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage Saalbach Hinterglemm – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage Saalbach Hinterglemm: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich Saalbach dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "obertauern",
+      "name": "Obertauern",
+      "region": "Salzburg",
+      "regionSlug": "salzburg",
+      "country": "AT",
+      "countryName": "Österreich",
+      "countrySlug": "oesterreich",
+      "lat": 47.25,
+      "lon": 13.56,
+      "elevation": { "min": 1630, "max": 2313 },
+      "avalancheRegion": "AT-05",
+      "avalancheMicroRegion": "AT-05-07",
+      "geosphereStations": [],
+      "neighbors": ["saalbach-hinterglemm"],
+      "impactRegions": ["AT", "DE-BY", "DE-BW", "CZ", "HU"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Winterferien DE/NL/CH", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 69.50,
+        "child1Day": 35.00,
+        "adult6Day": 347.50,
+        "child6Day": 175.00,
+        "currency": "EUR",
+        "source": "https://www.obertauern.com/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage Obertauern – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage Obertauern: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich Obertauern dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "lech-zuers",
+      "name": "Lech Zürs",
+      "region": "Vorarlberg",
+      "regionSlug": "vorarlberg",
+      "country": "AT",
+      "countryName": "Österreich",
+      "countrySlug": "oesterreich",
+      "lat": 47.21,
+      "lon": 10.14,
+      "elevation": { "min": 1450, "max": 2811 },
+      "avalancheRegion": "AT-08",
+      "avalancheMicroRegion": "AT-08-05-02",
+      "geosphereStations": [],
+      "neighbors": ["st-anton-am-arlberg", "kleinwalsertal"],
+      "impactRegions": ["DE-BY", "DE-BW", "AT", "NL", "CH"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Winterferien DE/NL/CH", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 81.50,
+        "child1Day": 48.50,
+        "adult6Day": 407.50,
+        "child6Day": 242.50,
+        "currency": "EUR",
+        "source": "https://www.lechzuers.com/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage Lech Zürs – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage Lech Zürs: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich Lech Zürs dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "kleinwalsertal",
+      "name": "Kleinwalsertal",
+      "region": "Vorarlberg",
+      "regionSlug": "vorarlberg",
+      "country": "AT",
+      "countryName": "Österreich",
+      "countrySlug": "oesterreich",
+      "lat": 47.35,
+      "lon": 10.15,
+      "elevation": { "min": 1086, "max": 2224 },
+      "avalancheRegion": "AT-08",
+      "avalancheMicroRegion": "AT-08-01",
+      "geosphereStations": [],
+      "neighbors": ["oberstdorf", "lech-zuers"],
+      "impactRegions": ["DE-BY", "DE-BW", "AT", "NL"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Winterferien DE/NL/CH", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 68.70,
+        "child1Day": 34.50,
+        "adult6Day": 343.50,
+        "child6Day": 172.50,
+        "currency": "EUR",
+        "source": "https://www.kleinwalsertal.com/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage Kleinwalsertal – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage Kleinwalsertal: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich das Kleinwalsertal dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "mayrhofen",
+      "name": "Mayrhofen / Zillertal",
+      "region": "Tirol",
+      "regionSlug": "tirol",
+      "country": "AT",
+      "countryName": "Österreich",
+      "countrySlug": "oesterreich",
+      "lat": 47.17,
+      "lon": 11.86,
+      "elevation": { "min": 630, "max": 2500 },
+      "avalancheRegion": "AT-07",
+      "avalancheMicroRegion": "AT-07-15",
+      "geosphereStations": [],
+      "neighbors": ["soelden", "kitzbuehel"],
+      "impactRegions": ["DE-BY", "DE-BW", "AT", "NL"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Winterferien DE/NL/CH", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 80.00,
+        "child1Day": 40.00,
+        "adult6Day": 400.00,
+        "child6Day": 200.00,
+        "currency": "EUR",
+        "source": "https://www.mayrhofen.at/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage Mayrhofen / Zillertal – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage Mayrhofen im Zillertal: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich Mayrhofen dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "oberstdorf",
+      "name": "Oberstdorf / Nebelhorn",
+      "region": "Bayern",
+      "regionSlug": "bayern",
+      "country": "DE",
+      "countryName": "Deutschland",
+      "countrySlug": "deutschland",
+      "lat": 47.37,
+      "lon": 10.28,
+      "elevation": { "min": 828, "max": 2224 },
+      "avalancheRegion": "DE-BY",
+      "avalancheMicroRegion": "DE-BY-30",
+      "geosphereStations": [],
+      "neighbors": ["kleinwalsertal", "garmisch-partenkirchen"],
+      "impactRegions": ["DE-BY", "DE-BW", "DE-NW", "AT", "NL"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Winterferien DE/NL/CH", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 68.70,
+        "child1Day": 34.50,
+        "adult6Day": 343.50,
+        "child6Day": 172.50,
+        "currency": "EUR",
+        "source": "https://www.oberstdorf.de/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage Oberstdorf / Nebelhorn – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage Oberstdorf am Nebelhorn: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich Oberstdorf dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "garmisch-partenkirchen",
+      "name": "Garmisch-Partenkirchen",
+      "region": "Bayern",
+      "regionSlug": "bayern",
+      "country": "DE",
+      "countryName": "Deutschland",
+      "countrySlug": "deutschland",
+      "lat": 47.50,
+      "lon": 11.10,
+      "elevation": { "min": 720, "max": 2720 },
+      "avalancheRegion": "DE-BY",
+      "avalancheMicroRegion": "DE-BY-60",
+      "geosphereStations": [],
+      "neighbors": ["oberstdorf"],
+      "impactRegions": ["DE-BY", "DE-BW", "AT", "DE-NW"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Winterferien DE/NL/CH", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 69.00,
+        "child1Day": 34.50,
+        "adult6Day": 345.00,
+        "child6Day": 172.50,
+        "currency": "EUR",
+        "source": "https://www.gapa.de/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage Garmisch-Partenkirchen – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage Garmisch-Partenkirchen: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich Garmisch dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "zermatt",
+      "name": "Zermatt",
+      "region": "Wallis",
+      "regionSlug": "wallis",
+      "country": "CH",
+      "countryName": "Schweiz",
+      "countrySlug": "schweiz",
+      "lat": 46.02,
+      "lon": 7.75,
+      "elevation": { "min": 1620, "max": 3883 },
+      "avalancheRegion": "CH",
+      "avalancheMicroRegion": "CH-4222",
+      "geosphereStations": [],
+      "neighbors": ["st-moritz"],
+      "impactRegions": ["CH", "DE-BW", "DE-BY", "NL", "BE"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Sportferien CH / Winterferien DE/NL", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 92.00,
+        "child1Day": 46.00,
+        "adult6Day": 460.00,
+        "child6Day": 230.00,
+        "currency": "CHF",
+        "source": "https://www.zermatt.ch/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage Zermatt – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage Zermatt: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich Zermatt dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "st-moritz",
+      "name": "St. Moritz",
+      "region": "Graubünden",
+      "regionSlug": "graubuenden",
+      "country": "CH",
+      "countryName": "Schweiz",
+      "countrySlug": "schweiz",
+      "lat": 46.50,
+      "lon": 9.84,
+      "elevation": { "min": 1750, "max": 3303 },
+      "avalancheRegion": "CH",
+      "avalancheMicroRegion": "CH-7114",
+      "geosphereStations": [],
+      "neighbors": ["davos-klosters", "laax", "zermatt"],
+      "impactRegions": ["CH", "DE-BY", "IT"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Sportferien CH / Winterferien DE", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 73.50,
+        "child1Day": 25.00,
+        "adult6Day": 367.50,
+        "child6Day": 125.00,
+        "currency": "CHF",
+        "source": "https://www.stmoritz.com/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage St. Moritz – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage St. Moritz: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich St. Moritz dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "davos-klosters",
+      "name": "Davos Klosters",
+      "region": "Graubünden",
+      "regionSlug": "graubuenden",
+      "country": "CH",
+      "countryName": "Schweiz",
+      "countrySlug": "schweiz",
+      "lat": 46.80,
+      "lon": 9.84,
+      "elevation": { "min": 1124, "max": 2844 },
+      "avalancheRegion": "CH",
+      "avalancheMicroRegion": "CH-5123",
+      "geosphereStations": [],
+      "neighbors": ["st-moritz", "laax", "ischgl"],
+      "impactRegions": ["CH", "DE-BY", "DE-BW", "NL"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Sportferien CH / Winterferien DE/NL", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 93.00,
+        "child1Day": 37.00,
+        "adult6Day": 465.00,
+        "child6Day": 185.00,
+        "currency": "CHF",
+        "source": "https://www.davos.ch/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage Davos Klosters – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage Davos Klosters: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich Davos dieses Wochenende?"
+      }
+    },
+    {
+      "slug": "laax",
+      "name": "LAAX / Flims",
+      "region": "Graubünden",
+      "regionSlug": "graubuenden",
+      "country": "CH",
+      "countryName": "Schweiz",
+      "countrySlug": "schweiz",
+      "lat": 46.84,
+      "lon": 9.26,
+      "elevation": { "min": 1100, "max": 3018 },
+      "avalancheRegion": "CH",
+      "avalancheMicroRegion": "CH-5124",
+      "geosphereStations": [],
+      "neighbors": ["davos-klosters", "st-moritz"],
+      "impactRegions": ["CH", "DE-BY", "DE-BW", "NL"],
+      "peakPeriods": [
+        { "from": "2025-12-20", "to": "2026-01-06", "label": "Weihnachten/Neujahr", "level": "extrem" },
+        { "from": "2026-01-31", "to": "2026-02-27", "label": "Sportferien CH / Winterferien DE/NL", "level": "sehr_hoch" },
+        { "from": "2026-02-14", "to": "2026-03-01", "label": "Faschingsferien BY", "level": "sehr_hoch" },
+        { "from": "2026-03-28", "to": "2026-04-12", "label": "Osterferien", "level": "hoch" }
+      ],
+      "tickets": {
+        "season": "2025/26",
+        "adult1Day": 85.00,
+        "child1Day": 34.00,
+        "adult6Day": 425.00,
+        "child6Day": 170.00,
+        "currency": "CHF",
+        "source": "https://www.laax.com/skipass",
+        "note": "Hauptsaison Kassenpreis"
+      },
+      "seo": {
+        "title": "Schneelage LAAX / Flims – Schneehöhe & 7-Tage Prognose",
+        "description": "Aktuelle Schneelage LAAX / Flims: Live-Schneehöhe, Neuschnee-Prognose, Schnee-Trend und Ski-Score. Lohnt sich LAAX dieses Wochenende?"
+      }
+    }
+  ]
+}

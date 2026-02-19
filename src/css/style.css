@@ -1,0 +1,756 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600&display=swap');
+
+:root {
+  --bg: #0f1923;
+  --bg-card: #162230;
+  --text: #e2e8f0;
+  --text-muted: #7a8b9e;
+  --accent: #4cc9f0;
+  --danger-1: #22c55e;
+  --danger-2: #eab308;
+  --danger-3: #f97316;
+  --danger-4: #dc2626;
+  --danger-5: #1a1a2e;
+  --trend-up: #22c55e;
+  --trend-down: #dc2626;
+  --trend-stable: #7a8b9e;
+  --border: #1e3048;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 15px; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/* --- HEADER --- */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.site-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-title:hover { color: var(--accent); }
+
+.site-nav {
+  display: flex;
+  gap: 16px;
+  font-size: 0.8rem;
+}
+
+.site-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.site-nav a:hover { color: var(--accent); }
+
+/* --- HEADINGS --- */
+h1 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  margin: 20px 0 4px;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  margin: 20px 0 8px;
+  color: var(--text);
+}
+
+h3 {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 12px 0 4px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* --- DATE --- */
+.date-display {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+/* --- BREADCRUMB --- */
+.breadcrumb {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 12px 0 0;
+  font-family: var(--font-mono);
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover { color: var(--accent); }
+
+.breadcrumb span { margin: 0 4px; }
+
+/* --- CROWD BAR (top) --- */
+.crowd-bar {
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.crowd-bar .crowd-level {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.crowd-bar .crowd-detail {
+  color: var(--text-muted);
+}
+
+/* --- RANKING TABLE --- */
+.ranking-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -12px;
+  padding: 0 12px;
+}
+
+table.ranking {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  table-layout: auto;
+}
+
+table.ranking th {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding: 8px 6px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+table.ranking th.num,
+table.ranking td.num {
+  text-align: right;
+  font-family: var(--font-mono);
+}
+
+table.ranking td {
+  padding: 7px 6px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+table.ranking tr { cursor: pointer; }
+
+table.ranking tr:hover td {
+  background: rgba(76, 201, 240, 0.04);
+}
+
+table.ranking .resort-name {
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+table.ranking .resort-region {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+table.ranking .score-cell {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+table.ranking .trend-up { color: var(--trend-up); }
+table.ranking .trend-down { color: var(--trend-down); }
+table.ranking .trend-stable { color: var(--trend-stable); }
+
+/* --- AVALANCHE DOT --- */
+.aval-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 2px;
+}
+
+.aval-1 { background: var(--danger-1); color: #0f1923; }
+.aval-2 { background: var(--danger-2); color: #0f1923; }
+.aval-3 { background: var(--danger-3); color: #0f1923; }
+.aval-4 { background: var(--danger-4); color: #fff; }
+.aval-5 { background: var(--danger-5); color: #fff; border: 1px solid #444; }
+
+/* --- TICKET PRICE --- */
+.ticket-price {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.ticket-currency {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* --- DETAIL PAGE GRID --- */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  margin: 16px 0;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.detail-block {
+  background: var(--bg-card);
+  padding: 12px;
+}
+
+.detail-block h3 {
+  margin-top: 0;
+}
+
+/* --- SKI SCORE --- */
+.score-big {
+  font-family: var(--font-mono);
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.score-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.score-max {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* --- SNOW DEPTH --- */
+.snow-value {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+
+.snow-unit {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.snow-elevation {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* --- NEWSNOW BARS --- */
+.newsnow-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 64px;
+  margin: 8px 0;
+}
+
+.newsnow-bar {
+  flex: 1;
+  background: var(--accent);
+  min-height: 2px;
+  border-radius: 1px 1px 0 0;
+  position: relative;
+}
+
+.newsnow-bar-label {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.newsnow-days {
+  display: flex;
+  gap: 3px;
+  margin-top: 2px;
+}
+
+.newsnow-day {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+/* --- TREND --- */
+.trend-row {
+  display: flex;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  align-items: center;
+}
+
+.trend-arrow {
+  font-size: 1rem;
+}
+
+/* --- AVALANCHE DETAIL --- */
+.aval-level-bar {
+  height: 6px;
+  border-radius: 1px;
+  margin: 6px 0;
+}
+
+.aval-text {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.aval-problems {
+  list-style: none;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.aval-problems li::before {
+  content: "/ ";
+  color: var(--border);
+}
+
+/* --- WEATHER 7D --- */
+.weather-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.weather-day {
+  background: var(--bg-card);
+  padding: 6px 2px;
+}
+
+.weather-day .day-name {
+  color: var(--text-muted);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+}
+
+.weather-day .temp-max { color: var(--text); }
+.weather-day .temp-min { color: var(--text-muted); }
+
+/* --- CROWD DETAIL --- */
+.crowd-block-bar {
+  height: 6px;
+  border-radius: 1px;
+  margin: 6px 0;
+}
+
+.crowd-label-big {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.crowd-detail-text {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.crowd-ferien-list {
+  list-style: none;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.crowd-ferien-list li::before {
+  content: "\00B7\00A0";
+}
+
+.crowd-tip {
+  margin-top: 8px;
+  padding: 6px 8px;
+  border-left: 2px solid var(--accent);
+  font-size: 0.78rem;
+  color: var(--text);
+  background: rgba(76, 201, 240, 0.04);
+}
+
+/* --- PEAK CALENDAR --- */
+.peak-calendar {
+  position: relative;
+  height: 20px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  margin: 8px 0;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.peak-period {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  opacity: 0.7;
+}
+
+.peak-extrem { background: var(--danger-4); }
+.peak-sehr_hoch { background: var(--danger-3); }
+.peak-hoch { background: var(--danger-2); }
+
+.peak-today {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--accent);
+  z-index: 2;
+}
+
+.peak-months {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.peak-legend {
+  display: flex;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.peak-legend-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 1px;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+/* --- TICKET DETAIL --- */
+.ticket-detail {
+  font-family: var(--font-mono);
+}
+
+.ticket-big {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ticket-small {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.ticket-link {
+  font-size: 0.7rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.ticket-link:hover { text-decoration: underline; }
+
+/* --- NEIGHBORS --- */
+.neighbors {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.neighbor-link {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 1px;
+}
+
+.neighbor-link:hover {
+  border-color: var(--accent);
+}
+
+/* --- BOOKING PLACEHOLDER --- */
+.booking-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+}
+
+.booking-link:hover { color: var(--accent); border-color: var(--accent); }
+
+/* --- SKELETON LOADING --- */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-card) 25%, #1c2f42 50%, var(--bg-card) 75%);
+  background-size: 200% 100%;
+  animation: skel 1.5s ease-in-out infinite;
+  border-radius: 1px;
+}
+
+@keyframes skel {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-row {
+  display: flex;
+  gap: 8px;
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.skeleton-cell {
+  height: 14px;
+}
+
+.skeleton-cell.w1 { width: 24px; }
+.skeleton-cell.w2 { width: 120px; }
+.skeleton-cell.w3 { width: 40px; }
+.skeleton-cell.w4 { width: 50px; }
+.skeleton-cell.w5 { width: 36px; }
+
+.skeleton-block {
+  height: 80px;
+  margin: 8px 0;
+}
+
+#loading-indicator { margin: 16px 0; }
+#ranking-body .skeleton-row { cursor: default; }
+
+/* --- COPY PROTECTION --- */
+.protected {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* --- FOOTER --- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 16px 0;
+  margin-top: 32px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.footer-links a:hover { color: var(--accent); }
+
+.footer-source {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* --- REGION / COUNTRY LIST --- */
+.region-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.region-list a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 1px;
+}
+
+.region-list a:hover { border-color: var(--accent); }
+
+/* --- LEGAL PAGES --- */
+.legal-content {
+  max-width: 680px;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 16px 0;
+}
+
+.legal-content h2 {
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.legal-content p {
+  margin: 8px 0;
+}
+
+/* --- RESPONSIVE --- */
+@media (min-width: 480px) {
+  .detail-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  html { font-size: 15px; }
+
+  .container { padding: 0 20px; }
+
+  .detail-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  h1 { font-size: 1.8rem; }
+}
+
+@media (min-width: 1200px) {
+  .detail-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* hide columns on small screens */
+@media (max-width: 479px) {
+  table.ranking .col-ticket,
+  table.ranking .col-region {
+    display: none;
+  }
+
+  table.ranking { font-size: 0.72rem; }
+  table.ranking th { font-size: 0.58rem; }
+
+  .site-nav { font-size: 0.7rem; gap: 10px; }
+
+  .weather-row { font-size: 0.6rem; }
+}
+
+@media (max-width: 767px) {
+  table.ranking .col-country {
+    display: none;
+  }
+}
+
+/* --- ERROR STATE --- */
+.error-msg {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--danger-3);
+  padding: 8px;
+  border: 1px solid var(--border);
+  margin: 8px 0;
+}
+
+/* --- MISC --- */
+a { color: var(--accent); }
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
