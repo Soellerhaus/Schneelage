@@ -232,7 +232,8 @@
     else if (rc >= 2 || dow === 6 || dow === 0) { level = 'Mittel'; color = '#eab308'; }
     else { level = 'Gering'; color = '#22c55e'; }
     var detail = dn[dow] + (rc > 0 ? ' + Ferien in ' + rc + ' Regionen' : ', keine relevanten Ferien');
-    el.innerHTML = '<span>Erwartete Auslastung:</span> <span class="crowd-level" style="color:' + color + '">' + esc(level) + '</span> <span class="crowd-detail">\u2013 ' + esc(detail) + '</span>';
+    var levelCls = level === 'Sehr hoch' ? 'sehr_hoch' : level === 'Hoch' ? 'hoch' : level === 'Mittel' ? 'mittel' : 'gering';
+    el.innerHTML = '<span>Erwartete Auslastung:</span> <span class="crowd-level crowd-level-' + levelCls + '">' + esc(level) + '</span> <span class="crowd-detail">\u2013 ' + esc(detail) + '</span>';
   }
 
   function renderRankingTable(resorts, holidays) {
@@ -257,12 +258,12 @@
           '<td class="num">' + (idx + 1) + '</td>' +
           '<td><span class="resort-name">' + esc(r.name) + '</span><br><span class="resort-region">' + esc(r.region) + '</span></td>' +
           '<td class="num score-cell">' + row.score + '</td>' +
-          '<td class="num" style="font-family:var(--font-mono)">' + row.depth + '<span style="font-size:0.65rem;color:var(--text-muted)">cm</span></td>' +
-          '<td class="num" style="font-family:var(--font-mono)">' + row.newSnow3d + '<span style="font-size:0.65rem;color:var(--text-muted)">cm</span></td>' +
-          '<td class="' + row.trend.cls + '" style="font-family:var(--font-mono);text-align:center">' + row.trend.arrow + '</td>' +
+          '<td class="num num-data">' + row.depth + '<span class="unit">cm</span></td>' +
+          '<td class="num num-data">' + row.newSnow3d + '<span class="unit">cm</span></td>' +
+          '<td class="' + row.trend.cls + '" style="text-align:center">' + row.trend.arrow + '</td>' +
           '<td><span class="aval-dot ' + ac + '">' + (row.avalLevel || '-') + '</span></td>' +
           '<td class="num col-ticket"><span class="ticket-price">' + esc(row.price) + '</span></td>' +
-          '<td class="col-country" style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted)">' + esc(r.country) + '</td></tr>';
+          '<td class="col-country" style="font-size:0.72rem;color:var(--text-muted)">' + esc(r.country) + '</td></tr>';
       });
       body.innerHTML = html;
     }).catch(function () { body.innerHTML = '<tr><td colspan="9" class="error-msg">Daten konnten nicht geladen werden.</td></tr>'; });
@@ -298,7 +299,7 @@
       // Snow depth
       html += '<div class="detail-block"><h3>Schneeh\u00F6he</h3><div class="snow-value">' + d + '<span class="snow-unit">cm</span></div><div class="snow-elevation">' + resort.elevation.min + ' \u2013 ' + resort.elevation.max + ' m</div></div>';
       // Trend
-      html += '<div class="detail-block"><h3>Trend</h3><div class="trend-row"><span>Heute ' + d + 'cm</span><span class="trend-arrow ' + tDir.cls + '">' + tDir.arrow + '</span><span>3d ' + (sn ? sn.depth3d : d) + 'cm</span><span class="trend-arrow ' + tDir.cls + '">' + tDir.arrow + '</span><span>7d ' + (sn ? sn.depth7d : d) + 'cm</span></div><div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">Trend: ' + esc(tDir.label) + '</div></div>';
+      html += '<div class="detail-block"><h3>Trend</h3><div class="trend-row"><span>Heute ' + d + 'cm</span><span class="trend-arrow ' + tDir.cls + '">' + tDir.arrow + '</span><span>3d ' + (sn ? sn.depth3d : d) + 'cm</span><span class="trend-arrow ' + tDir.cls + '">' + tDir.arrow + '</span><span>7d ' + (sn ? sn.depth7d : d) + 'cm</span></div><div class="trend-label">Trend: ' + esc(tDir.label) + '</div></div>';
       // Avalanche
       var aC = ['', 'var(--danger-1)', 'var(--danger-2)', 'var(--danger-3)', 'var(--danger-4)', 'var(--danger-5)'][al] || 'var(--border)';
       html += '<div class="detail-block"><h3>Lawinenstufe</h3><div class="aval-text"><span class="aval-dot aval-' + Math.min(5, Math.max(1, al)) + '">' + (al || '-') + '</span> ' + esc(window.getAvalancheLabel(al)) + '</div><div class="aval-level-bar" style="background:' + aC + '"></div>';
@@ -311,7 +312,7 @@
         html += '<div class="newsnow-bars">'; sn.snowfallDaily.forEach(function (v) { var h = Math.max(2, (v / mx) * 60); html += '<div class="newsnow-bar" style="height:' + h + 'px">' + (v > 0 ? '<span class="newsnow-bar-label">' + v + '</span>' : '') + '</div>'; }); html += '</div><div class="newsnow-days">';
         var da = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
         (sn.dailyDates || []).forEach(function (dt) { html += '<div class="newsnow-day">' + da[new Date(dt + 'T00:00:00').getDay()] + '</div>'; }); html += '</div>';
-      } else { html += '<div style="font-size:0.78rem;color:var(--text-muted)">Keine Daten verf\u00FCgbar</div>'; }
+      } else { html += '<div class="trend-label">Keine Daten verf\u00FCgbar</div>'; }
       html += '</div>';
       // Weather 7d
       html += '<div class="detail-block" style="grid-column:span 2"><h3>Wetter 7 Tage</h3>';
@@ -321,8 +322,14 @@
       }
       html += '</div>';
       // Crowd
-      html += '<div class="detail-block"><h3>Erwartete Auslastung</h3><div class="crowd-label-big" style="color:' + crowd.color + '">' + esc(crowd.label) + '</div><div class="crowd-block-bar" style="background:' + crowd.color + '"></div><div class="crowd-detail-text">' + esc(crowd.dayOfWeek) + ' \u2013 ' + esc(crowd.dayHint) + '</div>';
-      if (crowd.activeNames.length > 0) { html += '<div style="margin-top:6px;font-size:0.75rem;color:var(--text-muted)">Aktive Ferien im Einzugsgebiet:</div><ul class="crowd-ferien-list">'; crowd.activeNames.forEach(function (n) { html += '<li>' + esc(n) + '</li>'; }); html += '</ul>'; }
+      html += '<div class="detail-block"><h3>Erwartete Auslastung</h3><div class="crowd-label-big crowd-level-' + crowd.level + '">' + esc(crowd.label) + '</div><div class="crowd-block-bar" style="background:' + crowd.color + '"></div><div class="crowd-detail-text">' + esc(crowd.dayOfWeek) + ' \u2013 ' + esc(crowd.dayHint) + '</div>';
+      if (crowd.activeNames.length > 0) {
+        html += '<div class="crowd-ferien-summary">' + crowd.activeNames.length + ' aktive Ferienzeiten im Einzugsgebiet</div>';
+        html += '<button class="crowd-ferien-toggle" onclick="var l=this.nextElementSibling;l.classList.toggle(\'open\');this.textContent=l.classList.contains(\'open\')?\'\u25B2 Weniger anzeigen\':\'\u25BC Details anzeigen\'">&#9660; Details anzeigen</button>';
+        html += '<ul class="crowd-ferien-list">';
+        crowd.activeNames.forEach(function (n) { html += '<li>' + esc(n) + '</li>'; });
+        html += '</ul>';
+      }
       if (crowd.level === 'hoch' || crowd.level === 'sehr_hoch') html += '<div class="crowd-tip">Tipp: Unter der Woche (Di\u2013Do) ist es deutlich ruhiger.</div>';
       html += '</div>';
       // Peak calendar
